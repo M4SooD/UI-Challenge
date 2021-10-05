@@ -1,12 +1,28 @@
-const numbers = document.getElementsByClassName("password--numbers");
-const inputs = document.getElementsByClassName("password--field");
+let numbers;
+let inputs;
 const clearBtn = document.getElementById('clear');
+
+const createArrays = () => {
+  const cNumbers = document.getElementsByClassName("password--numbers");
+  const cInputs = document.getElementsByClassName("password--field");
+
+  numbers = convertCollectionToArray([], cNumbers)
+  inputs = convertCollectionToArray([], cInputs);
+}
+
+const convertCollectionToArray = (array, collection) => {
+  for (let item of collection) {
+    array.push(item);
+  }
+
+  return array;
+}
 
 
 // region Button Functionality
 
 const listenToClearClick = () => {
-  clearBtn.addEventListener('click', () => {});
+  clearBtn.addEventListener('click', clearLastValuedInput);
 }
 
 const setListenerOnBtns = () => {
@@ -70,17 +86,22 @@ const getInputIndex = (input) => {
 
 const clearLastValuedInput = () => {
   // TODO: Clear the last input which has value
-  for(let item of inputs){
-    item.value = "";
-  }
-  const hasValue = (inputs) => inputs.value != "";
-    inputs.some(hasValue);
+
+  inputs.some((input) => {
+    if (hasValue(input)) {
+      input.value = null;
+      return true;
+    }
+  });
 
   // TODO: Focus on input before the cleared input
 
 };
 
+const hasValue = (inputs) => inputs.value !== "";
+
 // endregion
 
+createArrays();
 setListenerOnBtns();
 setListenerOnFieldFocus();
