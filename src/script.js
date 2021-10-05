@@ -39,6 +39,8 @@ const setInputValue = (value) => {
   } else {
     // TODO: Check which element have value, and if there is none, set value to first.
     inputs[0].focus();
+    inputs[0].value = value;
+    setFocusOnInput(1);
   }
 };
 
