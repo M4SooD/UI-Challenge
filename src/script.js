@@ -68,10 +68,14 @@ const getInputIndex = (input) => {
   // return inputs.indexOf(input);
 };
 
-const clearLastValuedInput = () => {
   // TODO: Clear the last input which has value
+
+  function backSpace() {
+    let bsp = document.getElementById("clear").value;
+    document.getElementById("clear").value=bsp.substring(0,bsp.length-1);
+}
   // TODO: Focus on input before the cleared input
-};
+
 
 // endregion
 
