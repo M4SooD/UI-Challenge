@@ -6,7 +6,7 @@ const clearBtn = document.getElementById('clear');
 // region Button Functionality
 
 const listenToClearClick = () => {
-  clearBtn.addEventListener('click', () => {});
+  clearBtn.addEventListener('click', clearLastValuedInput);
 }
 
 const setListenerOnBtns = () => {
@@ -70,9 +70,9 @@ const getInputIndex = (input) => {
 
 const clearLastValuedInput = () => {
   // TODO: Clear the last input which has value
-    for (let i=0; i<inputs.length; i++) {
-      if (value = true) {
-        listenToClearClick(value.substring())
+    for (let i = (inputs.length - 1); i >= 0; i--) {
+      if (inputs[i].value) {
+        inputs[i].value = null;
       }
     }
   // TODO: Focus on input before the cleared input
