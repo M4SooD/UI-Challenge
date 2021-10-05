@@ -70,7 +70,14 @@ const getInputIndex = (input) => {
 
 const clearLastValuedInput = () => {
   // TODO: Clear the last input which has value
+  for(let item of inputs){
+    item.value = "";
+  }
+  const hasValue = (inputs) => inputs.value != "";
+    inputs.some(hasValue);
+
   // TODO: Focus on input before the cleared input
+
 };
 
 // endregion
