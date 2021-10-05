@@ -1,13 +1,19 @@
 const numbers = document.getElementsByClassName("password--numbers");
 const inputs = document.getElementsByClassName("password--field");
+const clearBtn = document.getElementById('clear');
 
 
 // region Button Functionality
+
+const listenToClearClick = () => {
+  clearBtn.addEventListener('click', () => {});
+}
 
 const setListenerOnBtns = () => {
   for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", (event) => onBtnClick(event));
   }
+  listenToClearClick();
 };
 
 function onBtnClick(event) {
@@ -39,8 +45,8 @@ const setInputValue = (value) => {
   } else {
     // TODO: Check which element have value, and if there is none, set value to first.
     inputs[0].focus();
-    inputs[0].value = value
-    setFocusOnInput(1)
+    inputs[0].value = value;
+    setFocusOnInput(1);
   }
 };
 
@@ -62,8 +68,9 @@ const getInputIndex = (input) => {
   // return inputs.indexOf(input);
 };
 
-const clearField = () => {
-  // TODO: Clear focused input and focus on last one
+const clearLastValuedInput = () => {
+  // TODO: Clear the last input which has value
+  // TODO: Focus on input before the cleared input
 };
 
 // endregion
