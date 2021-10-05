@@ -70,6 +70,11 @@ const getInputIndex = (input) => {
 
 const clearLastValuedInput = () => {
   // TODO: Clear the last input which has value
+    for (let i=0; i<inputs.length; i++) {
+      if (value = true) {
+        listenToClearClick(value.substring())
+      }
+    }
   // TODO: Focus on input before the cleared input
 };
 
