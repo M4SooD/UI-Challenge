@@ -1,37 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Pin Pad</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
   </head>
   <body>
-    <div class="pin-login">
-      <input type="password" value="" readonly class="pin-login__text" />
-      <div class="pin-login__numpad">
-        <button class="pin-login__key" value="1">1</button>
-        <button class="pin-login__key" value="2">2</button>
-        <button class="pin-login__key" value="3">3</button>
-        <br />
-        <button class="pin-login__key" value="4">4</button>
-        <button class="pin-login__key" value="5">5</button>
-        <button class="pin-login__key" value="6">6</button>
-        <br />
-        <button class="pin-login__key" value="7">7</button>
-        <button class="pin-login__key" value="8">8</button>
-        <button class="pin-login__key" value="9">9</button>
-        <br />
-        <button class="pin-login__key material-icons pin-login__clear">backspace</button>
-        <button class="pin-login__key" value="0">0</button>
-        <button class="pin-login__key material-icons pin-login__done">done</button>
+    <div class="iteracrions">
+      <h1>Set your 4-digit pin</h1>
+      <div class="password--fields">
+        <input
+          class="password--field"
+          id="field-1"
+          readonly
+          type="text"
+          maxlength="1"
+          name="password--field1"
+        />
+        <input
+          class="password--field"
+          id="field-2"
+          readonly
+          type="text"
+          maxlength="1"
+          name="password--field2"
+        />
+        <input
+          class="password--field"
+          id="field-3"
+          readonly
+          type="text"
+          maxlength="1"
+          name="password--field3"
+        />
+        <input
+          class="password--field"
+          id="field-4"
+          readonly
+          type="text"
+          maxlength="1"
+          name="password--field4"
+        />
+      </div>
+      <div class="password--buttons">
+        <button id="number-1" class="password--button password--numbers">
+          1
+        </button>
+        <button id="number-2" class="password--button password--numbers">
+          2
+        </button>
+        <button id="number-3" class="password--button password--numbers">
+          3
+        </button>
+        <button id="number-4" class="password--button password--numbers">
+          4
+        </button>
+        <button id="number-5" class="password--button password--numbers">
+          5
+        </button>
+        <button id="number-6" class="password--button password--numbers">
+          6
+        </button>
+        <button id="number-7" class="password--button password--numbers">
+          7
+        </button>
+        <button id="number-8" class="password--button password--numbers">
+          8
+        </button>
+        <button id="number-9" class="password--button password--numbers">
+          9
+        </button>
+        <button class="password--button"></button>
+        <button id="number-0" class="password--button password--numbers">
+          0
+        </button>
+        <button class="password--button">←</button>
+      </div>
+      <h4>Why do I need to set my pin?</h4>
+      <div>
+        <a> Back </a>
+        <a> Next </a>
       </div>
     </div>
-    <script src="./app.js"></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
