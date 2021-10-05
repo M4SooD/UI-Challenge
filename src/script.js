@@ -1,13 +1,25 @@
 const numbers = document.getElementsByClassName("password--numbers");
 const inputs = document.getElementsByClassName("password--field");
 
-let focusedInput;
+
+// region Button Functionality
 
 const setListenerOnBtns = () => {
   for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", (event) => onBtnClick(event));
   }
 };
+
+function onBtnClick(event) {
+  setInputValue(event.target.innerText);
+}
+
+
+// endregion
+
+// region Inputs Functionality
+
+let focusedInput;
 
 const setListenerOnFieldFocus = () => {
   for (let i = 0; i < inputs.length; i++) {
@@ -52,9 +64,7 @@ const clearField = () => {
   // TODO: Clear focused input and focus on last one
 };
 
-function onBtnClick(event) {
-  setInputValue(event.target.innerText);
-}
+// endregion
 
 setListenerOnBtns();
 setListenerOnFieldFocus();
