@@ -28,6 +28,7 @@ const createButtons = () => {
 
 const createRandomNumbers = () => {
     // while () {} do
+    randomNumbers.push(Math.floor(Math.random() * 10));
 }
 
 // endregion
