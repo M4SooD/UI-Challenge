@@ -2,7 +2,7 @@ const numbers = document.getElementsByClassName('password--numbers');
 const inputs = document.getElementsByClassName('password--field');
 const clearBtn = document.getElementById('clearBtn');
 
-const randomNumbers = []; // from 0 to 9
+const randomNumbers = []; // [5,3,6,4,2,1,8,9,0]
 
 // region Document Functionality
 
@@ -10,7 +10,7 @@ document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
     } else if ((event.key >= 0 && event.key <= 9)) {
-     setInputValue(event.key)
+        setInputValue(event.key)
     }
 
     if (event.key >= 0 && event.key <= 9) {
@@ -18,35 +18,32 @@ document.body.addEventListener('keydown', (event) => {
     }
 });
 
-
-
 const createButtons = () => {
-  for (let i = 0; i < randomNumbers.length; i++) {
-    
     const container = document.getElementById('buttons-container');
 
-    const button = document.createElement('button');
-    button.classList.add('btn');
-    button.innerText = createButtons[i];
-  }
+    for (let i = 0; i < randomNumbers.length; i++) {
+        const button = document.createElement('button');
+        button.classList.add('password--numbers');
+        button.innerText = randomNumbers[i];
+        container.appendChild(button);
+    }
 }
+
 const createRandomNumbers = () => {
-  do {
-    randomNumbers = Math.floor(Math.random() * 10);
-
-  }   while (randomNumbers.length < 10); 
-   
-
+    do {
+        const newNumber = Math.floor(Math.random() * 10);
+        if (randomNumbers.indexOf(newNumber) < 0) {
+            randomNumbers.push(newNumber);
+        }
+    } while (randomNumbers.length < 10);
+}
 
 // endregion
-
 
 // region Button Functionality
 
 const listenToClearClick = () => {
-
     clearBtn.addEventListener('click', clearLastValuedInput);
-
 }
 
 const setListenerOnBtns = () => {
@@ -122,6 +119,9 @@ const clearLastValuedInput = () => {
 const hasValue = (inputs) => inputs.value !== '';
 
 // endregion
+
+createRandomNumbers();
+createButtons();
 
 setListenerOnBtns();
 setListenerOnFieldFocus();
