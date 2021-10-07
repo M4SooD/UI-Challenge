@@ -1,6 +1,5 @@
 const numbers = document.getElementsByClassName("password-button");
 const inputs = document.getElementsByClassName("password-field");
-const clearBtn = document.getElementById("clear-btn");
 
 const numPadValues = []; // from 0 to 9
 
@@ -55,6 +54,7 @@ function numPadFiller(arr) {
 // region Button Functionality
 
 const listenToClearClick = () => {
+  const clearBtn = document.getElementById("clear-btn");
   clearBtn.addEventListener("click", clearLastValuedInput);
 };
 
