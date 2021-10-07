@@ -2,19 +2,43 @@ const numbers = document.getElementsByClassName('password--numbers');
 const inputs = document.getElementsByClassName('password--field');
 const clearBtn = document.getElementById('clearBtn');
 
-// Document Functionality
+const randomNumbers = []; // from 0 to 9
+
+// region Document Functionality
 
 document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
-    } else if ((event.key >= 0 && event.key <= 9)) { 
+    } else if ((event.key >= 0 && event.key <= 9)) {
      setInputValue(event.key)
     }
 
     if (event.key >= 0 && event.key <= 9) {
         setInputValue(event.key);
     }
-})
+});
+
+
+
+const createButtons = () => {
+  for (let i = 0; i < randomNumbers.length; i++) {
+    
+    const container = document.getElementById('buttons-container');
+
+    const button = document.createElement('button');
+    button.classList.add('btn');
+    button.innerText = createButtons[i];
+  }
+}
+const createRandomNumbers = () => {
+  do {
+    randomNumbers = Math.floor(Math.random() * 10);
+
+  }   while (randomNumbers.length < 10); 
+   
+
+
+// endregion
 
 
 // region Button Functionality
