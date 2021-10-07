@@ -97,6 +97,5 @@ const hasValue = (inputs) => inputs.value !== "";
 
 // endregion
 
-createArrays();
 setListenerOnBtns();
 setListenerOnFieldFocus();
