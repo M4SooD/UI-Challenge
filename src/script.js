@@ -17,12 +17,16 @@ document.body.addEventListener("keydown", (event) => {
   }
 });
 
-const createButtons = () => {
+const createButtons = (numPadValues) => {
   const container = document.getElementById("buttons-container");
-
   const button = document.createElement("button");
-  button.classList.add("btn");
-  button.innerText = "5";
+  
+  for (let i = 0; i < numPadValues.length; i++) {
+    button.classList.add("password--button", "password--numbers");
+    button.setAttribute(id, `number ${i}`);
+    button.innerText = numPadValues[i];
+    container.appendChild(button);
+  }
 };
 
 const createRandomNumbers = (min, max) =>
