@@ -10,9 +10,6 @@ document.body.addEventListener('keydown', (event) => {
     } else if (event.key >= 0 && event.key <= 9) {
         setInputValue(event.key);
     }
-    else if(event.key >= 0&& event.key <= 9){
-        setInputValue(event.key);
-       }
 })
 
 
@@ -44,15 +41,18 @@ let focusedInput;
 
 const setListenerOnFieldFocus = () => {
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener('focus', () => {
-            focusedInput = inputs[i];
+        inputs[i].addEventListener('focus', () => {  
+                focusedInput = inputs[i];           
         });
     }
 };
 
 const setInputValue = (value) => {
-    if (focusedInput) {
-        focusedInput.value = value;
+    if(inputs[3].value == null){
+        if (focusedInput) {
+            focusedInput.value = value;
+    }
+   
 
         // TODO: Call set focus on next input
         const currentInputIndex = getInputIndex(focusedInput);
