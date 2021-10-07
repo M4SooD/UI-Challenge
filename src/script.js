@@ -7,7 +7,11 @@ const clearBtn = document.getElementById('clearBtn');
 document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
-    } else if (event.key >= 0 && event.key <= 9) {
+    } else if ((event.key >= 0 && event.key <= 9)) { 
+     setInputValue(event.key)
+    }
+
+    if (event.key >= 0 && event.key <= 9) {
         setInputValue(event.key);
     }
 })
@@ -48,15 +52,13 @@ const setListenerOnFieldFocus = () => {
 };
 
 const setInputValue = (value) => {
-    if (inputs[3].value.length === 0) {
+    if (inputs[inputs.length - 1].value.length === 0) {
         if (focusedInput) {
             focusedInput.value = value;
 
-            // TODO: Call set focus on next input
             const currentInputIndex = getInputIndex(focusedInput);
             setFocusOnInput(currentInputIndex + 1);
         } else {
-            // TODO: Check which element have value, and if there is none, set value to first.
             inputs[0].focus();
             inputs[0].value = value;
             setFocusOnInput(1);
@@ -65,7 +67,6 @@ const setInputValue = (value) => {
 };
 
 const setFocusOnInput = (index) => {
-    // TODO: Check if element exists set focus
     if (inputs[index]) {
         inputs[index].focus();
     }
@@ -79,13 +80,10 @@ const getInputIndex = (input) => {
         }
     }
     return itemIndex;
-    // return inputs.indexOf(input);
 };
 
 const clearLastValuedInput = () => {
     let itemIndex;
-    // TODO: Clear the last input which has value
-    // TODO: Focus on input before the cleared input
     for (let i = (inputs.length - 1); i >= 0; i--) {
         if (inputs[i].value.length !== 0 && itemIndex === undefined) {
             inputs[i].value = null;
