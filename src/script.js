@@ -1,6 +1,5 @@
 const numbers = document.getElementsByClassName("password-button");
 const inputs = document.getElementsByClassName("password-field");
-const clearBtn = document.getElementById("clear-btn");
 
 const numPadValues = []; // from 0 to 9
 
@@ -19,22 +18,22 @@ const createButtons = (numPadValues) => {
   for (let i = 0; i <= numPadValues.length; i++) {
     if (i === 10) {
       // TODO: Add clear all functionality
-      createButton('❌', container, `clear-all`, ['password-button']);
+      createButton("❌", container, `clear-all`, ["password-button"]);
     } else {
-      createButton(numPadValues[i], container, `btn-${i}`, ['password-button']);
+      createButton(numPadValues[i], container, `btn-${i}`, ["password-button"]);
     }
   }
 
-  createButton('←', container, `clear-btn`, ['password-button']);
+  createButton("←", container, `clear-btn`, ["password-button"]);
 };
 
 const createButton = (innerText, container, id, classList) => {
-  const button = document.createElement('button');
+  const button = document.createElement("button");
   button.classList.add(...classList);
   button.innerText = innerText;
   button.id = id;
   container.appendChild(button);
-}
+};
 
 const createRandomNumbers = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,14 +48,22 @@ function numPadFiller(arr) {
   }
 }
 
-
 // endregion
 
 // region Button Functionality
 
+
+
 const listenToClearClick = () => {
+  const clearBtn = document.getElementById("clear-btn");
   clearBtn.addEventListener("click", clearLastValuedInput);
 };
+
+const listenToClearAllClick = () => {
+  const clearAllBtn = document.getElementById("clear-all");
+  clearAllBtn.addEventListener("click", clearAllValuedInput);
+};
+
 
 const setListenerOnBtns = () => {
   for (let i = 0; i < numbers.length; i++) {
@@ -113,7 +120,6 @@ const getInputIndex = (input) => {
   }
   return itemIndex;
 };
-
 const clearLastValuedInput = () => {
   let itemIndex;
   for (let i = inputs.length - 1; i >= 0; i--) {
@@ -124,6 +130,12 @@ const clearLastValuedInput = () => {
   }
 
   setFocusOnInput(itemIndex - 1);
+};
+
+const clearAllValuedInput = () => {
+  inputs[1].value = inputs[2].value = inputs[3].value = inputs[4].value = null;
+
+  setFocusOnInput(0);
 };
 
 const hasValue = (inputs) => inputs.value !== "";
