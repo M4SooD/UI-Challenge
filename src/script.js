@@ -75,13 +75,10 @@ const getInputIndex = (input) => {
         }
     }
     return itemIndex;
-    // return inputs.indexOf(input);
 };
 
 const clearLastValuedInput = () => {
     let itemIndex;
-    // TODO: Clear the last input which has value
-    // TODO: Focus on input before the cleared input
     for (let i = (inputs.length - 1); i >= 0; i--) {
         if (inputs[i].value.length !== 0 && itemIndex === undefined) {
             inputs[i].value = null;
