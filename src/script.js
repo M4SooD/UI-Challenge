@@ -1,23 +1,30 @@
-const numbers = document.getElementsByClassName("password--numbers");
-const inputs = document.getElementsByClassName("password--field");
-const clearBtn = document.getElementById('clear');
+const numbers = document.getElementsByClassName('password--numbers');
+const inputs = document.getElementsByClassName('password--field');
+const clearBtn = document.getElementById('clearBtn');
 
+// Document Functionality
+
+document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'Backspace') {
+        clearLastValuedInput();
+    }
+})
 
 // region Button Functionality
 
 const listenToClearClick = () => {
-  clearBtn.addEventListener('click', clearLastValuedInput);
+    clearBtn.addEventListener('click', clearLastValuedInput);
 }
 
 const setListenerOnBtns = () => {
-  for (let i = 0; i < numbers.length; i++) {
-    numbers[i].addEventListener("click", (event) => onBtnClick(event));
-  }
-  listenToClearClick();
+    for (let i = 0; i < numbers.length; i++) {
+        numbers[i].addEventListener('click', (event) => onBtnClick(event));
+    }
+    listenToClearClick();
 };
 
 function onBtnClick(event) {
-  setInputValue(event.target.innerText);
+    setInputValue(event.target.innerText);
 }
 
 
@@ -28,54 +35,58 @@ function onBtnClick(event) {
 let focusedInput;
 
 const setListenerOnFieldFocus = () => {
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("focus", () => {
-      focusedInput = inputs[i];
-    });
-  }
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('focus', () => {
+            focusedInput = inputs[i];
+        });
+    }
 };
 
 const setInputValue = (value) => {
-  if (focusedInput) {
-    focusedInput.value = value;
+    if (focusedInput) {
+        focusedInput.value = value;
 
-    // TODO: Call set focus on next input
-    const currentInputIndex = getInputIndex(focusedInput);
-    setFocusOnInput(currentInputIndex + 1);
-  } else {
-    // TODO: Check which element have value, and if there is none, set value to first.
-    inputs[0].focus();
-    inputs[0].value = value;
-    setFocusOnInput(1);
-  }
+        // TODO: Call set focus on next input
+        const currentInputIndex = getInputIndex(focusedInput);
+        setFocusOnInput(currentInputIndex + 1);
+    } else {
+        // TODO: Check which element have value, and if there is none, set value to first.
+        inputs[0].focus();
+        inputs[0].value = value;
+        setFocusOnInput(1);
+    }
 };
 
 const setFocusOnInput = (index) => {
-  // TODO: Check if element exists set focus
-  if (inputs[index]) {
-    inputs[index].focus();
-  }
+    // TODO: Check if element exists set focus
+    if (inputs[index]) {
+        inputs[index].focus();
+    }
 };
 
 const getInputIndex = (input) => {
-  let itemIndex;
-  for (let i = 0; i < inputs.length; i++) {
-    if (input.id === inputs[i].id) {
-      itemIndex = i;
+    let itemIndex;
+    for (let i = 0; i < inputs.length; i++) {
+        if (input.id === inputs[i].id) {
+            itemIndex = i;
+        }
     }
-  }
-  return itemIndex;
-  // return inputs.indexOf(input);
+    return itemIndex;
+    // return inputs.indexOf(input);
 };
 
 const clearLastValuedInput = () => {
-  // TODO: Clear the last input which has value
+    let itemIndex;
+    // TODO: Clear the last input which has value
+    // TODO: Focus on input before the cleared input
     for (let i = (inputs.length - 1); i >= 0; i--) {
-      if (inputs[i].value) {
-        inputs[i].value = null;
-      }
+        if (inputs[i].value.length !== 0 && itemIndex === undefined) {
+            inputs[i].value = null;
+            itemIndex = i;
+        }
     }
-  // TODO: Focus on input before the cleared input
+
+    setFocusOnInput(itemIndex - 1);
 };
 
 // endregion
