@@ -32,7 +32,7 @@ function numPadFiller(arr) {
   let rnd;
   for (let i = 0; i < 10; ++i) {
     rnd = createRandomNumbers(0, 9);
-    if (arr.indexOf(rnd) > 0) {
+    if (arr.indexOf(rnd) >= 0) {
       --i;
     } else {
       arr[i] = rnd;
