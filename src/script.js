@@ -2,15 +2,15 @@ const numbers = document.getElementsByClassName('password--numbers');
 const inputs = document.getElementsByClassName('password--field');
 const clearBtn = document.getElementById('clearBtn');
 
-const createRandomNumbers = function() {
-  const arr = [];
-  do {
-    const randomNumber = Math.floor(Math.random() * 9);
-    if (!arr.includes(randomNumber)) {
-      arr.push(randomNumber);
-    }
-  } while (arr.length < 10);
-  return arr;
+const createRandomNumbers = function () {
+    const arr = [];
+    do {
+        const randomNumber = Math.floor(Math.random() * 10);
+        if (!arr.includes(randomNumber)) {
+            arr.push(randomNumber);
+        }
+    } while (arr.length < 10);
+    return arr;
 }; // from 0 to 9
 
 // region Document Functionality
@@ -19,24 +19,21 @@ document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
     } else if ((event.key >= 0 && event.key <= 9)) {
-     setInputValue(event.key)
-    }
-
-    if (event.key >= 0 && event.key <= 9) {
-        setInputValue(event.key);
+        setInputValue(event.key)
     }
 });
 
 const createButtons = () => {
-  const numbers = createRandomNumbers();
+    const numbers = createRandomNumbers();
     const container = document.getElementById('buttons-container');
+
     for (let i = 0; i < numbers.length; i++) {
-    const button = document.createElement('button');
-    button.classList.add('password--number', 'password--button');
-    button.innerText = numbers[i];
-    container.appendChild(button)
-    onBtnClick()
-}}
+        const button = document.createElement('button');
+        button.classList.add('password--numbers');
+        button.innerText = numbers[i];
+        container.appendChild(button);
+    }
+}
 
 // endregion
 
@@ -44,9 +41,7 @@ const createButtons = () => {
 // region Button Functionality
 
 const listenToClearClick = () => {
-
     clearBtn.addEventListener('click', clearLastValuedInput);
-
 }
 
 const setListenerOnBtns = () => {
@@ -123,8 +118,7 @@ const hasValue = (inputs) => inputs.value !== '';
 
 // endregion
 
+createButtons();
+
 setListenerOnBtns();
 setListenerOnFieldFocus();
-createButtons()
-getValueNumber()
-onBtnClick()
