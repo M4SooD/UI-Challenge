@@ -7,10 +7,9 @@ const clearBtn = document.getElementById('clearBtn');
 document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
+    } else if (event.key >= 0 && event.key <= 9) {
+        setInputValue(event.key);
     }
-    else if(event.key >= 96 && event.key <= 105){
-        setInputValue();
-       }
 })
 
 
@@ -96,7 +95,7 @@ const clearLastValuedInput = () => {
 
 };
 
-const hasValue = (inputs) => inputs.value !== "";
+const hasValue = (inputs) => inputs.value !== '';
 
 // endregion
 
