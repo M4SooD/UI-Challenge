@@ -2,7 +2,16 @@ const numbers = document.getElementsByClassName('password--numbers');
 const inputs = document.getElementsByClassName('password--field');
 const clearBtn = document.getElementById('clearBtn');
 
-const randomNumbers = []; // from 0 to 9
+const createRandomNumbers = function() {
+  const arr = [];
+  do {
+    const randomNumber = Math.floor(Math.random() * 9);
+    if (!arr.includes(randomNumber)) {
+      arr.push(randomNumber);
+    }
+  } while (arr.length < 10);
+  return arr;
+}; // from 0 to 9
 
 // region Document Functionality
 
@@ -19,16 +28,15 @@ document.body.addEventListener('keydown', (event) => {
 });
 
 const createButtons = () => {
+  const numbers = createRandomNumbers();
     const container = document.getElementById('buttons-container');
-
+    for (let i = 0; i < numbers.length; i++) {
     const button = document.createElement('button');
-    button.classList.add('btn');
-    button.innerText = '5';
-}
-
-const createRandomNumbers = () => {
-    // while () {} do
-}
+    button.classList.add('password--number', 'password--button');
+    button.innerText = numbers[i];
+    container.appendChild(button)
+    onBtnClick()
+}}
 
 // endregion
 
@@ -117,3 +125,6 @@ const hasValue = (inputs) => inputs.value !== '';
 
 setListenerOnBtns();
 setListenerOnFieldFocus();
+createButtons()
+getValueNumber()
+onBtnClick()
