@@ -4,10 +4,18 @@ const clearBtn = document.getElementById('clearBtn');
 
 // Document Functionality
 
-document.body.addEventListener('keydown', (event) => {
-    if (event.key === 'Backspace') {
-        clearLastValuedInput();
+document.body.addEventListener('keydown', (event) => 
+  if (event.key === 'Backspace') {
+    clearLastValuedInput();
+}
+  
+document.body.addEventListener('keydown', (key) => 
+
+      if (key.key === ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")) {
+        setInputValue(parseInt(key.key));
+      }
     }
+  
 })
 
 // region Button Functionality
