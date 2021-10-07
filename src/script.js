@@ -2,38 +2,54 @@ const numbers = document.getElementsByClassName("password--numbers");
 const inputs = document.getElementsByClassName("password--field");
 const clearBtn = document.getElementById("clearBtn");
 
-const randomNumbers = []; // from 0 to 9
+const numPadValues = []; // from 0 to 9
 
 // region Document Functionality
-document.body.addEventListener('keydown', (event) => {
-    if (event.key === 'Backspace') {
-        clearLastValuedInput();
-    } else if ((event.key >= 0 && event.key <= 9)) {
-     setInputValue(event.key)
-    }
-
-    if (event.key >= 0 && event.key <= 9) {
-        setInputValue(event.key);
-    }
-});
-
-const createButtons = () => {
-    const container = document.getElementById('buttons-container');
-
-    const button = document.createElement('button');
-    button.classList.add('btn');
-    button.innerText = '5';
-}
-
-const createRandomNumbers = () => {
-    // while () {} do
-}
-
-// endregion
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "Backspace") {
+    clearLastValuedInput();
+  } else if (event.key >= 0 && event.key <= 9) {
+    setInputValue(event.key);
+  }
 
   if (event.key >= 0 && event.key <= 9) {
     setInputValue(event.key);
-  };
+  }
+});
+
+const createButtons = () => {
+  const container = document.getElementById("buttons-container");
+
+  const button = document.createElement("button");
+  button.classList.add("btn");
+  button.innerText = "5";
+};
+
+const createRandomNumbers = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+function numPadFiller(arr) {
+  let rnd;
+  for (let i = 0; i < 10; ++i) {
+    rnd = createRandomNumbers(0, 9);
+    if (arr.indexOf(rnd) > 0) {
+      --i;
+    } else {
+      arr[i] = rnd;
+    }
+  }
+}
+
+//Testing Start
+numPadFiller(numPadValues);
+console.log(numPadValues);
+//Testing Ends
+
+// endregion
+
+if (event.key >= 0 && event.key <= 9) {
+  setInputValue(event.key);
+}
 
 // region Button Functionality
 
