@@ -6,7 +6,9 @@ const clearBtn = document.getElementById('clearBtn');
 
 document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
-        clearLastValuedInput();
+        clearLastValuedInput();     
+    } else if ((event.key >= 48 && event.key <= 57) || (event.key >= 96 && event.key <= 105)) { 
+      console.log('key pressed')
     }
 })
 
