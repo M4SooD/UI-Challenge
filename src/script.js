@@ -45,13 +45,15 @@ const setListenerOnFieldFocus = () => {
 };
 
 const setInputValue = (value) => {
-    if (focusedInput) {
+    if (focusedInput > inputs.length ) {
         focusedInput.value = value;
 
         // TODO: Call set focus on next input
         const currentInputIndex = getInputIndex(focusedInput);
         setFocusOnInput(currentInputIndex + 1);
+        
     } else {
+
         // TODO: Check which element have value, and if there is none, set value to first.
         inputs[0].focus();
         inputs[0].value = value;
