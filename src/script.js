@@ -1,6 +1,6 @@
-const numbers = document.getElementsByClassName("password--numbers");
-const inputs = document.getElementsByClassName("password--field");
-const clearBtn = document.getElementById("clearBtn");
+const numbers = document.getElementsByClassName("password-button");
+const inputs = document.getElementsByClassName("password-field");
+const clearBtn = document.getElementById("clear-btn");
 
 const numPadValues = []; // from 0 to 9
 
@@ -11,49 +11,46 @@ document.body.addEventListener("keydown", (event) => {
   } else if (event.key >= 0 && event.key <= 9) {
     setInputValue(event.key);
   }
-
-  if (event.key >= 0 && event.key <= 9) {
-    setInputValue(event.key);
-  }
 });
 
 const createButtons = (numPadValues) => {
   const container = document.getElementById("buttons-container");
-  const button = document.createElement("button");
-  button.classList.add("password--button", "password--numbers");
 
-  for (let i = 0; i < numPadValues.length; i++) {
-    button.setAttribute(id, `number ${i}`);
-    button.innerText = numPadValues[i];
-    container.appendChild(button);
+  for (let i = 0; i <= numPadValues.length; i++) {
+    if (i === 10) {
+      // TODO: Add clear all functionality
+      createButton('❌', container, `clear-all`, ['password-button']);
+    } else {
+      createButton(numPadValues[i], container, `btn-${i}`, ['password-button']);
+    }
   }
+
+  createButton('←', container, `clear-btn`, ['password-button']);
 };
+
+const createButton = (innerText, container, id, classList) => {
+  const button = document.createElement('button');
+  button.classList.add(...classList);
+  button.innerText = innerText;
+  button.id = id;
+  container.appendChild(button);
+}
 
 const createRandomNumbers = (min, max) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 function numPadFiller(arr) {
   let rnd;
-  for (let i = 0; i < 10; ++i) {
+  while (numPadValues.length < 10) {
     rnd = createRandomNumbers(0, 9);
-    if (arr.indexOf(rnd) >= 0) {
-      --i;
-    } else {
-      arr[i] = rnd;
+    if (arr.indexOf(rnd) < 0) {
+      numPadValues.push(rnd);
     }
   }
 }
 
-//Testing Start
-numPadFiller(numPadValues);
-console.log(numPadValues);
-//Testing Ends
 
 // endregion
-
-if (event.key >= 0 && event.key <= 9) {
-  setInputValue(event.key);
-}
 
 // region Button Functionality
 
@@ -132,6 +129,9 @@ const clearLastValuedInput = () => {
 const hasValue = (inputs) => inputs.value !== "";
 
 // endregion
+
+numPadFiller(numPadValues);
+createButtons(numPadValues);
 
 setListenerOnBtns();
 setListenerOnFieldFocus();
