@@ -8,6 +8,9 @@ document.body.addEventListener('keydown', (event) => {
     if (event.key === 'Backspace') {
         clearLastValuedInput();
     }
+    else if(event.key >= 96 && event.key <= 105){
+        setInputValue();
+       }
 })
 
 
