@@ -27,8 +27,14 @@ const createButtons = () => {
 }
 
 const createRandomNumbers = () => {
-    // while () {} do
-    randomNumbers.push(Math.floor(Math.random() * 10));
+    while (randomNumbers.length < 10) {
+        const newNum = Math.floor(Math.random() * 10);
+        if (randomNumbers.indexOf(newNum) < 0) {
+            randomNumbers.push(newNum);
+        }
+    }
+
+    console.log(randomNumbers);
 }
 
 // endregion
@@ -118,3 +124,4 @@ const hasValue = (inputs) => inputs.value !== '';
 
 setListenerOnBtns();
 setListenerOnFieldFocus();
+createRandomNumbers();
