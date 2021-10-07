@@ -41,27 +41,26 @@ let focusedInput;
 
 const setListenerOnFieldFocus = () => {
     for (let i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener('focus', () => {  
-                focusedInput = inputs[i];           
+        inputs[i].addEventListener('focus', () => {
+            focusedInput = inputs[i];
         });
     }
 };
 
 const setInputValue = (value) => {
-    if(inputs[3].value == null){
+    if (inputs[3].value.length === 0) {
         if (focusedInput) {
             focusedInput.value = value;
-    }
-   
 
-        // TODO: Call set focus on next input
-        const currentInputIndex = getInputIndex(focusedInput);
-        setFocusOnInput(currentInputIndex + 1);
-    } else {
-        // TODO: Check which element have value, and if there is none, set value to first.
-        inputs[0].focus();
-        inputs[0].value = value;
-        setFocusOnInput(1);
+            // TODO: Call set focus on next input
+            const currentInputIndex = getInputIndex(focusedInput);
+            setFocusOnInput(currentInputIndex + 1);
+        } else {
+            // TODO: Check which element have value, and if there is none, set value to first.
+            inputs[0].focus();
+            inputs[0].value = value;
+            setFocusOnInput(1);
+        }
     }
 };
 
