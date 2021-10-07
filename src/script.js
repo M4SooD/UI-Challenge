@@ -20,9 +20,9 @@ document.body.addEventListener("keydown", (event) => {
 const createButtons = (numPadValues) => {
   const container = document.getElementById("buttons-container");
   const button = document.createElement("button");
-  
+  button.classList.add("password--button", "password--numbers");
+
   for (let i = 0; i < numPadValues.length; i++) {
-    button.classList.add("password--button", "password--numbers");
     button.setAttribute(id, `number ${i}`);
     button.innerText = numPadValues[i];
     container.appendChild(button);
