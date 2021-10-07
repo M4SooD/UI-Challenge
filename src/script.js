@@ -29,7 +29,7 @@ const createButtons = () => {
 
     for (let i = 0; i < numbers.length; i++) {
         const button = document.createElement('button');
-        button.classList.add('password--numbers');
+        button.classList.add('password--numbers', 'password--button');
         button.innerText = numbers[i];
         container.appendChild(button);
     }
